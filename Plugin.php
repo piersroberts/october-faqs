@@ -24,12 +24,12 @@ class Plugin extends \System\Classes\PluginBase
         ];
     }
 
-//    public function registerComponents()
-//    {
-//        return [
-//            'BuzzwordCompliant\DBContent\Components\StaticBlock' => 'dbcontent'
-//        ];
-//    }
+    public function registerComponents()
+    {
+        return [
+            'BuzzwordCompliant\FAQs\Components\FAQ' => 'faq'
+        ];
+    }
 //
 //    public function registerPermissions()
 //    {
