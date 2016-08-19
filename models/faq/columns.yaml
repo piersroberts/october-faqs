@@ -1,0 +1,13 @@
+columns:
+  id:
+    label: Id
+  name:
+    label: Name
+  questions_count:
+      label: Questions
+      relation: questions_count
+      valueFrom: count
+      default: 0
+  updated_at:
+      label: Last modified
+      type: timesince

@@ -1,0 +1,17 @@
+# ===================================
+#  Reorder Behavior Config
+# ===================================
+
+# Reorder Title
+title: Reorder Questions
+
+# Attribute name
+nameFrom: question
+
+# Model Class name
+modelClass: BuzzwordCompliant\FAQs\Models\Question
+
+# Toolbar widget configuration
+toolbar:
+    # Partial for toolbar buttons
+    buttons: reorder_toolbar

@@ -1,0 +1,7 @@
+columns:
+  sort_order:
+    label: Position
+    invisible: true
+  question:
+    label: Question
+    searchable: true

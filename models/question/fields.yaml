@@ -1,0 +1,7 @@
+fields:
+  question:
+    label: Name
+    type: text
+  answer:
+    label: Answer
+    type: richeditor

@@ -1,0 +1,13 @@
+name: FAQ
+form: $/buzzwordcompliant/faqs/models/faq/fields.yaml
+modelClass: BuzzwordCompliant\FAQs\Models\FAQ
+
+create:
+    title: New FAQ
+    redirect: buzzwordcompliant/faqs/faqs/update/:id
+    redirectClose: buzzwordcompliant/faqs/faqs/update/:id
+
+update:
+    title: Edit FAQ
+    redirect: buzzwordcompliant/faqs/faqs
+    redirectClose: buzzwordcompliant/faqs/faqs
