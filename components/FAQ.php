@@ -1,8 +1,12 @@
 <?php
 namespace BuzzwordCompliant\FAQs\Components;
-use BuzzwordCompliant\FAQs\Models\FAQ as FAQModel
+
+use Illuminate\Support\Facades\Log;
+use BuzzwordCompliant\FAQs\Models\FAQ as FAQModel;
 class FAQ extends \Cms\Classes\ComponentBase
 {
+    private $faq;
+
     public function componentDetails()
     {
         return [
@@ -24,8 +28,21 @@ class FAQ extends \Cms\Classes\ComponentBase
         ];
     }
 
+    public function onRun()
+    {
+        $this->faq = FAQModel::with('questions')->find($this->property('id'));
+        if(!$this->faq){
+            Log::notice('FAQ: "' . $this->property('id') . '" not found in '.$this->getPage()->fileName);
+        }
+    }
+
     public function questions()
     {
-        return FAQModel::find($this->params['id']);
+        return isset($this->faq->questions) ? $this->faq->questions : [];
+    }
+
+    public function title()
+    {
+        return isset($this->faq->name) ? $this->faq->name : '';
     }
 }
