@@ -1,6 +1,6 @@
 fields:
   question:
-    label: Name
+    label: Question
     type: text
   answer:
     label: Answer

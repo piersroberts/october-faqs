@@ -1,6 +1,6 @@
 <?php
 namespace BuzzwordCompliant\FAQs\Components;
-
+use BuzzwordCompliant\FAQs\Models\FAQ as FAQModel
 class FAQ extends \Cms\Classes\ComponentBase
 {
     public function componentDetails()
@@ -26,6 +26,6 @@ class FAQ extends \Cms\Classes\ComponentBase
 
     public function questions()
     {
-        return ['First Question', 'Second Question', 'Third Question'];
+        return FAQModel::find($this->params['id']);
     }
 }
