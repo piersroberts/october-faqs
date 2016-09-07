@@ -23,7 +23,7 @@ class CreateInitialTables extends Migration
             $table->foreign('faq_id')->references('id')->on('bc_faqs');
             $table->text('question')->nullable();
             $table->text('answer')->nullable();
-            $table->integer('sort_order')->nullable;
+            $table->integer('sort_order')->nullable();
             $table->timestamps();
         });
     }
