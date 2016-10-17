@@ -17,7 +17,7 @@ To reorder the questions, make sure you have saved the FAQ first and then click 
     {% for item in faq.questions %}
         <li>
         <h4>{{ item.question }}</h4>
-        {% if item.details %}<p><em>{{ item.details }}</em></p>{% endif %}
+        {% if item.details %}<p><em>{{ item.details|raw }}</em></p>{% endif %}
         <p>{{ item.answer|raw }}</p>
         </li>
     {% endfor %}
