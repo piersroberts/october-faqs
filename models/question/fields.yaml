@@ -2,6 +2,9 @@ fields:
   question:
     label: Question
     type: text
+  details:
+    label: Details
+    type: richeditor
   answer:
     label: Answer
     type: richeditor

@@ -1,3 +1,6 @@
 1.0.0:
     - Create initial tables
     - create_initial_tables.php
+1.0.1:
+    - Add rich text to question
+    - add_question_details_column.php
