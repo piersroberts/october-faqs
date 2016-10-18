@@ -10,8 +10,8 @@ class FAQ extends \Cms\Classes\ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'FAQs',
-            'description' => 'Exposes FAQs'
+            'name' => 'FAQ Questions',
+            'description' => 'Fetch a list of questions from a specific FAQ'
         ];
     }
 
@@ -53,7 +53,7 @@ class FAQ extends \Cms\Classes\ComponentBase
             $this->faq = FAQModel::with('questions')->find($identifier);
         }else{
             $identifier = $this->property('slug');
-            $this->faq = FAQModel::with('questions')->where('slug',$identifier);
+            $this->faq = FAQModel::with('questions')->where('slug',$identifier)->first();
         }
 
         if(!$this->faq){
