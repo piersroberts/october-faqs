@@ -1,10 +1,10 @@
 <?php namespace BuzzwordCompliant\FAQs\Models;
 use October\Rain\Database\Model;
-
+use Str;
 
 class FAQ extends Model
 {
-//    use \October\Rain\Database\Traits\Validation;
+    use \October\Rain\Database\Traits\Sluggable;
 
     public $table = 'bc_faqs';
     public $hasMany = [
@@ -19,4 +19,6 @@ class FAQ extends Model
             'count'=>true,
         ]
     ];
+
+    protected $slugs = ['slug' => 'name'];
 }

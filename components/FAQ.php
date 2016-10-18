@@ -18,9 +18,16 @@ class FAQ extends \Cms\Classes\ComponentBase
     public function defineProperties()
     {
         return [
+            'slug' => [
+                'title'             => 'FAQ Name',
+                'description'       => 'The name of the FAQ',
+                'type'              => 'dropdown',
+                'placeholder'       => 'Please choose a FAQ',
+                'required'          => true
+            ],
             'id' => [
-                'title'             => 'FAQ Id',
-                'description'       => 'The Id of the FAQ',
+                'title'             => 'FAQ Id [deprecated]',
+                'description'       => 'Use to overide the selected FAQ',
                 'type'              => 'string',
                 'validationPattern' => '^[0-9]+$',
                 'validationMessage' => 'The Id must be a number'
@@ -28,11 +35,29 @@ class FAQ extends \Cms\Classes\ComponentBase
         ];
     }
 
+    public function getSlugOptions()
+    {
+        $faqs = \BuzzwordCompliant\FAQs\Models\FAQ::all();
+        $options = [];
+        foreach($faqs as $faq){
+            $options[$faq->slug] = $faq->name ? $faq->name : $faq->slug;
+        }
+        return $options;
+    }
+
     public function onRun()
     {
-        $this->faq = FAQModel::with('questions')->find($this->property('id'));
+        if($this->property('id')){
+            Log::notice('FAQ: Fetching a FAQ by Id is deprecated, please switch to using the dropdown in '.$this->getPage()->fileName);
+            $identifier = $this->property('id');
+            $this->faq = FAQModel::with('questions')->find($identifier);
+        }else{
+            $identifier = $this->property('slug');
+            $this->faq = FAQModel::with('questions')->where('slug',$identifier);
+        }
+
         if(!$this->faq){
-            Log::notice('FAQ: "' . $this->property('id') . '" not found in '.$this->getPage()->fileName);
+            Log::notice('FAQ: "' . $identifier . '" not found in '.$this->getPage()->fileName);
         }
     }
 

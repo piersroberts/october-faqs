@@ -27,7 +27,35 @@ class Plugin extends \System\Classes\PluginBase
     public function registerComponents()
     {
         return [
-            'BuzzwordCompliant\FAQs\Components\FAQ' => 'faq'
+            'BuzzwordCompliant\FAQs\Components\FAQ' => 'faq',
+            'BuzzwordCompliant\FAQs\Components\FAQList' => 'faqlist',
         ];
     }
+//
+//    public function registerPermissions()
+//    {
+//        return [
+//            'buzzwordcompliant.dbcontent.list_static_blocks' => [
+//                'label' => 'Show the static block list',
+//                'tab' => 'DBContent'
+//            ],
+//            'buzzwordcompliant.dbcontent.new_static_block' => [
+//                'label' => 'Add a static block',
+//                'tab' => 'DBContent'
+//            ],
+//            'buzzwordcompliant.dbcontent.edit_static_block' => [
+//                'label' => 'Save changes to an existing static block',
+//                'tab' => 'DBContent'
+//            ],
+//            'buzzwordcompliant.dbcontent.delete_static_block' => [
+//                'label' => 'Delete a static block',
+//                'tab' => 'DBContent'
+//            ],
+//            'buzzwordcompliant.dbcontent.change_key_names' => [
+//                'label' => 'Change the key name of a static block',
+//                'tab' => 'DBContent'
+//            ]
+//        ];
+//    }
+
 }

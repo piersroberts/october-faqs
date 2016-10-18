@@ -1,6 +1,6 @@
 columns:
-  id:
-    label: Id
+  slug:
+    label: Slug
   name:
     label: Name
   questions_count:
