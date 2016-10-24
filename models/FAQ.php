@@ -1,4 +1,7 @@
-<?php namespace BuzzwordCompliant\FAQs\Models;
+<?php
+
+namespace BuzzwordCompliant\FAQs\Models;
+
 use October\Rain\Database\Model;
 use Str;
 
