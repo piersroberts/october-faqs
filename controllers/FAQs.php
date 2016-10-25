@@ -1,8 +1,8 @@
-<?php
-namespace BuzzwordCompliant\FAQs\Controllers;
+<?php namespace BuzzwordCompliant\FAQs\Controllers;
 
 use Backend\Facades\BackendMenu;
 use Illuminate\Http\Request;
+
 class FAQs extends \Backend\Classes\Controller
 {
     public function __construct()
@@ -17,15 +17,15 @@ class FAQs extends \Backend\Classes\Controller
         'Backend.Behaviors.RelationController',
         'Backend.Behaviors.ReorderController'
     ];
+
     public $listConfig = 'config_list.yaml';
     public $formConfig = 'config_form.yaml';
     public $relationConfig = 'config_relation.yaml';
     public $reorderConfig = 'config_reorder.yaml';
 
-    //public $requiredPermissions = ['buzzwordcompliant.faqs.list_faqs'];
+//  public $requiredPermissions = ['buzzwordcompliant.faqs.list_faqs'];
     public function reorderExtendQuery($query)
     {
-        $query->where('faq_id',$this->params[0]);
+        $query->where('faq_id', $this->params[0]);
     }
-
 }
