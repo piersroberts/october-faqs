@@ -1,4 +1,6 @@
-<?php namespace BuzzwordCompliant\FAQs\Updates;
+<?php
+
+namespace BuzzwordCompliant\FAQs\Updates;
 
 use Schema;
 Use Str;
@@ -9,23 +11,19 @@ class AddSlugIndex extends Migration
 {
     public function up()
     {
-
-        Schema::table('bc_faqs', function($table)
-        {
+        Schema::table('bc_faqs', function ($table) {
             $table->string('slug')->unique()->nullable();
         });
 
-        FAQ::all()->each(function($question){
+        FAQ::all()->each(function ($question) {
             $question->slug = Str::slug($question->name);
             $question->save();
         });
-
     }
 
     public function down()
     {
-        Schema::table('bc_faqs', function($table)
-        {
+        Schema::table('bc_faqs', function ($table) {
             $table->dropColumn('slug');
         });
     }

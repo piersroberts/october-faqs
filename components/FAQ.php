@@ -1,9 +1,12 @@
 <?php
+
 namespace BuzzwordCompliant\FAQs\Components;
 
 use Illuminate\Support\Facades\Log;
 use BuzzwordCompliant\FAQs\Models\FAQ as FAQModel;
-class FAQ extends \Cms\Classes\ComponentBase
+use Cms\Classes\ComponentBase;
+
+class FAQ extends ComponentBase
 {
     private $faq;
 
@@ -11,7 +14,7 @@ class FAQ extends \Cms\Classes\ComponentBase
     {
         return [
             'name' => 'FAQ Questions',
-            'description' => 'Fetch a list of questions from a specific FAQ'
+            'description' => 'Fetch a list of questions from a specific FAQ',
         ];
     }
 
@@ -19,27 +22,27 @@ class FAQ extends \Cms\Classes\ComponentBase
     {
         return [
             'slug' => [
-                'title'             => 'FAQ Name',
-                'description'       => 'The name of the FAQ',
-                'type'              => 'dropdown',
-                'placeholder'       => 'Please choose a FAQ',
-                'required'          => true
+                'title' => 'FAQ Name',
+                'description' => 'The name of the FAQ',
+                'type' => 'dropdown',
+                'placeholder' => 'Please choose a FAQ',
+                'required' => true,
             ],
             'id' => [
-                'title'             => 'FAQ Id [deprecated]',
-                'description'       => 'Use to overide the selected FAQ',
-                'type'              => 'string',
+                'title' => 'FAQ Id [deprecated]',
+                'description' => 'Use to overide the selected FAQ',
+                'type' => 'string',
                 'validationPattern' => '^[0-9]+$',
-                'validationMessage' => 'The Id must be a number'
-            ]
+                'validationMessage' => 'The Id must be a number',
+            ],
         ];
     }
 
     public function getSlugOptions()
     {
-        $faqs = \BuzzwordCompliant\FAQs\Models\FAQ::all();
+        $faqs = FAQModel::all();
         $options = [];
-        foreach($faqs as $faq){
+        foreach ($faqs as $faq) {
             $options[$faq->slug] = $faq->name ? $faq->name : $faq->slug;
         }
         return $options;
@@ -47,17 +50,20 @@ class FAQ extends \Cms\Classes\ComponentBase
 
     public function onRun()
     {
-        if($this->property('id')){
-            Log::notice('FAQ: Fetching a FAQ by Id is deprecated, please switch to using the dropdown in '.$this->getPage()->fileName);
+        if ($this->property('id')) {
+            Log::notice(
+                'FAQ: Fetching a FAQ by Id is deprecated, please switch to using the dropdown in ' .
+                $this->getPage()->fileName
+            );
             $identifier = $this->property('id');
             $this->faq = FAQModel::with('questions')->find($identifier);
-        }else{
+        } else {
             $identifier = $this->property('slug');
-            $this->faq = FAQModel::with('questions')->where('slug',$identifier)->first();
+            $this->faq = FAQModel::with('questions')->where('slug', $identifier)->first();
         }
 
-        if(!$this->faq){
-            Log::notice('FAQ: "' . $identifier . '" not found in '.$this->getPage()->fileName);
+        if (!$this->faq) {
+            Log::notice('FAQ: "' . $identifier . '" not found in ' . $this->getPage()->fileName);
         }
     }
 

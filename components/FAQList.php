@@ -1,9 +1,10 @@
 <?php
 namespace BuzzwordCompliant\FAQs\Components;
 
-use Illuminate\Support\Facades\Log;
+use Cms\Classes\ComponentBase;
 use BuzzwordCompliant\FAQs\Models\FAQ as FAQModel;
-class FAQList extends \Cms\Classes\ComponentBase
+
+class FAQList extends ComponentBase
 {
     private $faqList;
 
@@ -11,7 +12,7 @@ class FAQList extends \Cms\Classes\ComponentBase
     {
         return [
             'name' => 'FAQ List',
-            'description' => 'Show a list of all FAQs'
+            'description' => 'Show a list of all FAQs',
         ];
     }
 

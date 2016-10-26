@@ -1,4 +1,6 @@
-<?php namespace BuzzwordCompliant\FAQs\Updates;
+<?php
+
+namespace BuzzwordCompliant\FAQs\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
@@ -7,16 +9,14 @@ class CreateInitialTables extends Migration
 {
     public function up()
     {
-        Schema::create('bc_faqs', function($table)
-        {
+        Schema::create('bc_faqs', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name')->unique();
             $table->timestamps();
         });
 
-        Schema::create('bc_questions', function($table)
-        {
+        Schema::create('bc_questions', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('faq_id')->unsigned()->nullable();
