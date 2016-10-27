@@ -1,8 +1,8 @@
 columns:
-  slug:
-    label: Slug
   name:
     label: Name
+  slug:
+    label: Slug
   questions_count:
       label: Questions
       relation: questions_count
