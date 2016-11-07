@@ -8,3 +8,6 @@
     - FAQs now have 'slugs' which means you don't have to rely on the FAQ id from the database
     - You can now choose your FAQ from the dropdown menu in the component
     - add_slug_index.php
+1.1.1:
+    - Database maintenance. Updated all timestamp columns to be nullable.
+    - update_timestamp_nullable.php
