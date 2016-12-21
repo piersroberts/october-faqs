@@ -2,6 +2,7 @@
 
 namespace BuzzwordCompliant\FAQs\Controllers;
 
+use Backend\Classes\Controller;
 use Backend\Facades\BackendMenu;
 use Illuminate\Http\Request;
 
