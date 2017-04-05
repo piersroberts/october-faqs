@@ -5,6 +5,7 @@ namespace BuzzwordCompliant\FAQs\Controllers;
 use Backend\Classes\Controller;
 use Backend\Facades\BackendMenu;
 use Illuminate\Http\Request;
+use Backend\Classes\Controller;
 
 class FAQs extends Controller
 {
